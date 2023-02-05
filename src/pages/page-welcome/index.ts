@@ -37,7 +37,7 @@ export function initWelcome(params) {
     const boton = div.querySelector(".boton");
     boton?.addEventListener("click", () => {
       console.log("click");
-      params.goTo("/page-rules");
+      params.goTo("/reglas");
     });
   }
   div.appendChild(style);

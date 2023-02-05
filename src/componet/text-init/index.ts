@@ -7,11 +7,11 @@ export function init() {
     render() {
       const div = document.createElement("div");
       const style = document.createElement("style");
-      const value = this.getAttribute("value") || "Hola mundo";
+
       div.innerHTML = `
             <div class="container">
             <h1 class = "title">
-            Piedra 
+            Piedra, 
             <br>
             Papel ó
             <br>
@@ -32,6 +32,9 @@ export function init() {
                 font-size: 80px;
                 font-weight: 700;
                 font-family: 'Odibee Sans', cursive;
+                text-align: center;
+                margin: 25px auto;
+
             }
             `;
       this.appendChild(div);
