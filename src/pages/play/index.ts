@@ -103,6 +103,7 @@ export function initPlay(params) {
     }
   }, 1000);
 
+  // se le pasa el valor de counter al componente contador
   const contadorComp = div.querySelector(".contador") as any;
 
   const pcTijeraEl = div.querySelector(".pc-tijera") as any;
@@ -212,7 +213,8 @@ export function initPlay(params) {
   const manoPiedraElImg = manoPiedraEl.querySelector(".piedra-img") as any;
   manoPiedraElImg.style.height = "230px";
   manoPiedraElImg.style.width = "75px";
-
+  // se agrega el evento click a la imagen de piedra y se le asigna la funcion removepiedraclick
+  //
   const removepiedraclick = () => {
     state.setMove("piedra");
     manoPiedraElImg.style.objectPosition = "0px 43px";
