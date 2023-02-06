@@ -1,3 +1,5 @@
+import { state } from "./state";
+
 import { init as initButton } from "./componet/button/index";
 import { init as initText } from "./componet/text-init/index";
 import { init as initManoPapel } from "./componet/mano-papel/index";
@@ -8,7 +10,7 @@ import { initRules } from "./componet/text-rules/index";
 
 import { initRouter } from "./router";
 
-(function () {
+function inicializa() {
   initButton();
   initRules();
   initText();
@@ -18,7 +20,16 @@ import { initRouter } from "./router";
   initManoPiedra();
   initManoTijera();
 
-  const root: any = document.querySelector(".root") as HTMLElement;
   //console.log(root);
+}
+
+(function () {
+  const root: any = document.querySelector(".root") as HTMLElement;
+  // console.log(state);
+  // console.log(localStorage);
+
+  //state.init();
+  inicializa();
   initRouter(root);
+  // console.log(localStorage.savedPlay);
 })();

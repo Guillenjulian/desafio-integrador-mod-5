@@ -1,10 +1,8 @@
 import { initWelcome } from "./pages/page-welcome";
 import { initRules } from "./pages/reglas";
 import { initPlay } from "./pages/play";
-import { inityoulose } from "./pages/result/perdiste";
-import { initwin } from "./pages/result/ganaste";
 
-import { initTie } from "./pages/result/empate";
+import { initResult } from "./pages/result";
 
 const routes = [
   {
@@ -16,20 +14,12 @@ const routes = [
     component: initRules,
   },
   {
+    path: /\/result/,
+    component: initResult,
+  },
+  {
     path: /\/play/,
     component: initPlay,
-  },
-  {
-    path: /\/perdiste/,
-    component: inityoulose,
-  },
-  {
-    path: /\/ganaste/,
-    component: initwin,
-  },
-  {
-    path: /\/empate/,
-    component: initTie,
   },
 ];
 const BASE_PATH = "/desafio-integrador";

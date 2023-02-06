@@ -1,120 +1,108 @@
-import { type } from "os";
-
-type jugada ="piedra" | "papel" | "tijera";
+type jugada = "piedra" | "papel" | "tijera";
 const state = {
   data: {
-    currentGame:{
-      cpuPlay:"",
-      userPlay:"",
+    currentGame: {
+      cpuPlay: "",
+      userPlay: "",
     },
-    playHistory: {
-      player: 0,
-      cpu: 0,
-      result:""
-    },
-
-  }
-  init(){
-    const localData = JSON.parse(localStorage.getItem("Saved-play")) as any;
-    if(localData){
-      return;
-    }
-      else{
-        this.setState(this.data);
-      }
-  
-    
+    playHistory: [
+      {
+        player: 0,
+        cpu: 0,
+        result: "",
+      },
+    ],
   },
-  setState(newState){
+  init() {
+    const localData: any = localStorage.getItem("Saved-play");
+    this.setState(JSON.parse(localData) || this.data);
+  },
+  setState(newState: any) {
     this.data = newState;
     localStorage.setItem("Saved-play", JSON.stringify(this.data));
   },
-  getState(){
+  getState() {
     return this.data;
   },
-  aleatoryPlayPc(){
+  aleatoryPlayPc() {
     const moves = ["piedra", "papel", "tijera"];
+
     const aleatory = Math.floor(Math.random() * 3);
     return moves[aleatory];
   },
-  
-  addPlay(play: jugada){
+
+  setMove(move: jugada) {
     const currentState = this.getState();
-    const cpuPlay = this.aleatoryPlayPc();
-     currentState.current.userPlay = play;
-      currentState.current.cpuPlay = cpuPlay;
-      this.whoWin(play, cpuPlay);
 
+    const gamePc = this.aleatoryPlayPc();
+
+    currentState.currentGame.cpuPlay = gamePc;
+    currentState.currentGame.userPlay = move;
+
+    this.whoWin(move, gamePc);
   },
-  whoWin(userPlay: jugada, cpuPlay: jugada){
-
-
-    const jugadaGanada =[
-
-    userPlay == "piedra" && cpuPlay == "tijera",
-    userPlay == "papel" && cpuPlay == "piedra",
-    userPlay == "tijera" && cpuPlay == "papel",
-
+  whoWin(userPlay: jugada, cpuPlay: jugada) {
+    const jugadaGanada = [
+      userPlay == "piedra" && cpuPlay == "tijera",
+      userPlay == "papel" && cpuPlay == "piedra",
+      userPlay == "tijera" && cpuPlay == "papel",
     ];
-    if(jugadaGanada.includes(true)){
-       return this.pushHistory("Ganaste");
+    if (jugadaGanada.includes(true)) {
+      return this.pushHistory("Ganador");
     }
-    const jugadaPerdida =[
+    const jugadaPerdida = [
       userPlay == "piedra" && cpuPlay == "papel",
       userPlay == "papel" && cpuPlay == "tijera",
       userPlay == "tijera" && cpuPlay == "piedra",
     ];
-    if(jugadaPerdida.includes(true)){
-      return this.pushHistory("Perdiste");
+    if (jugadaPerdida.includes(true)) {
+      return this.pushHistory("Perdedor");
     }
-    const jugadaEmpatada =[
+    const jugadaEmpatada = [
       userPlay == "piedra" && cpuPlay == "piedra",
       userPlay == "papel" && cpuPlay == "papel",
       userPlay == "tijera" && cpuPlay == "tijera",
     ];
-    if(jugadaEmpatada.includes(true)){
-      return this.pushHistory("Empate");
+    if (jugadaEmpatada.includes(true)) {
+      return this.pushHistory("Empates");
     }
-
   },
-  pushHistory(result: string){
+  pushHistory(jugada: string) {
     const currentState = this.getState();
     const playerScore = currentState.playHistory.player;
     const cpuScore = currentState.playHistory.cpu;
 
-
-    if(result == "Ganaste"){
+    if (jugada == "Ganador") {
       this.setState({
         ...currentState,
-        playHistory:{
-          player : playerScore + 1,
+        playHistory: {
+          player: playerScore + 1,
           cpu: cpuScore,
-          result: "Ganaste"
-        }
+          result: "Ganaste",
+        },
       });
     }
-    if(result == "Perdiste"){
+    if (jugada == "Perdedor") {
       this.setState({
         ...currentState,
-        playHistory:{
-          player : playerScore,
+        playHistory: {
+          player: playerScore,
           cpu: cpuScore + 1,
-          result: "Perdiste"
-        }
+          result: "Perdiste",
+        },
       });
     }
-    if(result == "Empate"){
+    if (jugada == "Empates") {
       this.setState({
         ...currentState,
-        playHistory:{
-          player : playerScore,
+        playHistory: {
+          player: playerScore,
           cpu: cpuScore,
-          result: "Empate"
-        }
+          result: "Empate",
+        },
       });
-
-  }
-
-  }
+    }
+  },
 };
+
 export { state };

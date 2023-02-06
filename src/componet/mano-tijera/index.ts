@@ -5,13 +5,13 @@ export function init() {
       this.render();
     }
     render() {
-      const img: any = document.createElement("img");
       const imgSrc = require("../../image/tijera.png");
+      const img: any = document.createElement("img");
+      const style = document.createElement("style");
       img.className = "tijera-img";
 
       img.src = imgSrc;
 
-      const style = document.createElement("style");
       style.innerHTML = `
     .tijera-img{
       height: 145px;

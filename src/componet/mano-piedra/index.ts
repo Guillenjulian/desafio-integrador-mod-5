@@ -6,17 +6,13 @@ export function init() {
     }
     render() {
       const imgSrc = require("../../image/piedra.png");
-      const div = document.createElement("div");
+      const img = document.createElement("img");
       const style = document.createElement("style");
-      div.className = "paper";
-      div.innerHTML = `
-    <img src="${imgSrc}" alt="papel" class  ="piedra-img" />
-    `;
+      img.className = "piedra-img";
+      img.src = imgSrc;
       style.innerHTML = `
-    .paper{
-      display: flex;
-    }
-    .piedr-img{
+   
+    .piedra-img{
       height: 145px;
       width: 61px;
       object-position: 0px 40px;
@@ -27,9 +23,9 @@ export function init() {
         width: 69px;
         object-position: 0px 60px;
       }`;
-      div.appendChild(style);
+      img.appendChild(style);
 
-      this.appendChild(div);
+      this.appendChild(img);
     }
   }
   customElements.define("mano-piedra", ManoPiedra);
