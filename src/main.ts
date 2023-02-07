@@ -28,7 +28,7 @@ function inicializa() {
   // console.log(state);
   // console.log(localStorage);
 
-  //state.init();
+  state.init();
   inicializa();
   initRouter(root);
   // console.log(localStorage.savedPlay);
