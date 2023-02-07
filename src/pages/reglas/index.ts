@@ -42,14 +42,8 @@ export function initRules(params) {
     });
   }
 
-  function handel() {
-    const mano = div.querySelector(".manos");
-    mano?.addEventListener("click", () => {
-      console.log(mano, "mano");
-    });
-  }
-
   div.appendChild(style);
   handleClick();
+
   return div;
 }

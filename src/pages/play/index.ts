@@ -126,6 +126,7 @@ export function initPlay(params) {
   const manoTijeraElImg = manoTijeraEl.querySelector(".tijera-img") as any;
   manoTijeraElImg.style.height = "230px";
   manoTijeraElImg.style.width = "75px";
+  manoTijeraElImg.style.objectPosition = "0px 43px";
 
   const removetijerasclick = () => {
     state.setMove("tijera");
@@ -163,6 +164,10 @@ export function initPlay(params) {
     manoPapelElImg.removeEventListener("click", removetijerasclick);
     manoPapelEl.style.cursor = "default";
     manoPapelEl.style.transform = "unset";
+
+    manoTijeraEl.removeEventListener("click", removetijerasclick);
+    manoPiedraEl.removeEventListener("click", removetijerasclick);
+    manoPapelEl.removeEventListener("click", removetijerasclick);
   };
   manoTijeraElImg.addEventListener("click", removetijerasclick);
 
@@ -194,6 +199,12 @@ export function initPlay(params) {
 
       manoPapelElImg.style.height = "280px";
       manoPapelElImg.style.width = "100px";
+
+      manoPapelElImg.style.objectPosition = "0px 43px";
+      manoPapelElImg.style.transition = "all 0.5s ease-out";
+
+      manoPiedraEl.style.opacity = "0.4";
+      manoTijeraEl.style.opacity = "0.4";
     }, 800);
     clearInterval(interavalidId);
     setTimeout(() => {
@@ -206,6 +217,14 @@ export function initPlay(params) {
     manoPiedraElImg.removeEventListener("click", removepapelclick);
     manoPiedraEl.style.cursor = "default";
     manoPiedraEl.style.transform = "unset";
+
+    manoTijeraElImg.removeEventListener("click", removepapelclick);
+    manoTijeraEl.style.cursor = "default";
+    manoTijeraEl.style.transform = "unset";
+
+    manoTijeraEl.removeEventListener("click", removepapelclick);
+    manoPiedraEl.removeEventListener("click", removepapelclick);
+    manoPapelEl.removeEventListener("click", removepapelclick);
   };
   manoPapelElImg.addEventListener("click", removepapelclick);
 

@@ -35,7 +35,7 @@ export function initRouter(container: any) {
     handleRoute(completePath);
   }
   function handleRoute(route) {
-    console.log("El router recibio una nueva ruta y esta es:::  ", route);
+    // console.log("El router recibio una nueva ruta y esta es:::  ", route);
     ///// ////segunda solucion al problema de las rutas en github pages
     const newRoute = isGithubPages() ? route.replace(BASE_PATH, "") : route;
     ////for q recorre rutas y compara las regular exprecions
