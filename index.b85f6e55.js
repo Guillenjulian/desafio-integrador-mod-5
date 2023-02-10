@@ -1049,13 +1049,13 @@ parcelHelpers.export(exports, "initStar", ()=>initStar);
 var _state = require("../../state");
 function initStar() {
     const currentState = (0, _state.state).getState();
-    //console.log(currentState, "state");
+    console.log(currentState, "state");
     const playerScore = currentState.playHistory.player;
-    //  console.log(playerScore, "player");
+    console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
-    // console.log(cpuScore, "cpu");
+    console.log(cpuScore, "cpu");
     const resultEL = currentState.playHistory.result;
-    // console.log(resultEL, "result");
+    console.log(resultEL, "result");
     class Star extends HTMLElement {
         constructor(){
             super();
