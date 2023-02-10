@@ -22,7 +22,8 @@ const routes = [
     component: initPlay,
   },
 ];
-const BASE_PATH = "/desafio-integrador";
+
+const BASE_PATH = "/desafio-integrador-mod-5";
 
 function isGithubPages() {
   return location.host.includes("github.io");

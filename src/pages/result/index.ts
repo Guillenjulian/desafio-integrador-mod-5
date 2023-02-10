@@ -1,18 +1,6 @@
 import { state } from "../../state";
 
 export function initResult(params) {
-  const currentState = state.getState();
-  console.log(currentState, "state en el init");
-
-  const playerScore = currentState.playHistory.player;
-  // console.log(playerScore, "player en el init");
-
-  const cpuScore = currentState.playHistory.cpu;
-  //  console.log(cpuScore, "cpu en el init");
-
-  const result = currentState.playHistory.result;
-  console.log(result, "result en el init");
-
   const div = document.createElement("div");
   const style = document.createElement("style");
   // creo el div con los contenido de la pagina
@@ -66,16 +54,10 @@ export function initResult(params) {
 
   function handel() {
     const currentState = state.getState();
-    console.log(currentState, "state en el init");
-
-    const playerScore = currentState.playHistory.player;
-    // console.log(playerScore, "player en el init");
-
-    const cpuScore = currentState.playHistory.cpu;
-    //  console.log(cpuScore, "cpu en el init");
+    // console.log(currentState, "state en el init");
 
     const result = currentState.playHistory.result;
-    console.log(result, "result en el init");
+
     const startEl = div.querySelector("my-star");
     const starCmon: any = startEl?.querySelector(".star");
 
@@ -90,6 +72,7 @@ export function initResult(params) {
 
   div.appendChild(style);
   handleClick();
+
   handel();
 
   return div;

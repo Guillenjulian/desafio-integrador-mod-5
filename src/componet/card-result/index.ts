@@ -2,7 +2,7 @@ import { state } from "../../state";
 
 export function initStar() {
   const currentState = state.getState();
-  console.log(currentState, "state");
+  //console.log(currentState, "state");
 
   const playerScore = currentState.playHistory.player;
   //  console.log(playerScore, "player");
@@ -11,7 +11,7 @@ export function initStar() {
   // console.log(cpuScore, "cpu");
 
   const resultEL = currentState.playHistory.result;
-  console.log(resultEL, "result");
+  // console.log(resultEL, "result");
 
   class Star extends HTMLElement {
     constructor() {
@@ -94,6 +94,7 @@ export function initStar() {
       this.appendChild(div);
     }
   }
-
-  customElements.define("my-star", Star);
+  setTimeout(() => {
+    customElements.define("my-star", Star);
+  }, 800);
 }
