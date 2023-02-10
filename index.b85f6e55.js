@@ -1596,22 +1596,22 @@ parcelHelpers.export(exports, "initResult", ()=>initResult);
 var _state = require("../../state");
 function initResult(params) {
     const currentState = (0, _state.state).getState();
-    console.log(currentState, "state");
+    // console.log(currentState, "state");
     const playerScore = currentState.playHistory.player;
-    console.log(playerScore, "player");
+    //console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
-    console.log(cpuScore, "cpu");
+    //console.log(cpuScore, "cpu");
     const resultEL = currentState.playHistory.result;
-    console.log(resultEL, "result");
+    // console.log(resultEL, "result");
     const div = document.createElement("div");
     const style = document.createElement("style");
     function handel() {
         //const currentState = state.getState();
         // console.log(currentState, "state en el init");
         // const startEl: any = div.querySelector(".my-star");
-        console.log(startEl, "startEl");
+        // console.log(startEl, "startEl");
         const starCmon = div.querySelector(".star");
-        console.log(starCmon, "starCmon");
+        //console.log(starCmon, "starCmon");
         if (resultEL == "Ganaste") starCmon.style.backgroundColor = "green";
         else if (resultEL == "Perdiste") starCmon.style.backgroundColor = "red";
         else if (resultEL == "Empate") starCmon.style.backgroundColor = "yellow";
@@ -1723,9 +1723,8 @@ margin-top: 20px;
     }
     div.appendChild(style);
     handleClick();
-    setTimeout(()=>{
-        handel();
-    }, 1000);
+    setTimeout(()=>{}, 400);
+    handel();
     return div;
 }
 
