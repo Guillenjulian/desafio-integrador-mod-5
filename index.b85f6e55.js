@@ -1654,9 +1654,7 @@ function initResult(params) {
     }
     div.appendChild(style);
     handleClick();
-    setTimeout(()=>{
-        handel();
-    }, 1000);
+    handel();
     return div;
 }
 
