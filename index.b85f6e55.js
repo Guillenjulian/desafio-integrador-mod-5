@@ -631,6 +631,7 @@ const state = {
         const gamePc = this.aleatoryPlayPc();
         currentState.currentGame.cpuPlay = gamePc;
         currentState.currentGame.userPlay = move;
+        state.setState(currentState);
         this.whoWin(move, gamePc);
     },
     whoWin (userPlay, cpuPlay) {
