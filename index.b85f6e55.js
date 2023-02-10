@@ -1049,13 +1049,13 @@ parcelHelpers.export(exports, "initStar", ()=>initStar);
 var _state = require("../../state");
 function initStar() {
     const currentState = (0, _state.state).getState();
-    console.log(currentState, "state");
+    //console.log(currentState, "state");
     const playerScore = currentState.playHistory.player;
     //  console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
     // console.log(cpuScore, "cpu");
     const resultEL = currentState.playHistory.result;
-    console.log(resultEL, "result");
+    // console.log(resultEL, "result");
     class Star extends HTMLElement {
         constructor(){
             super();
@@ -1136,7 +1136,9 @@ function initStar() {
             this.appendChild(div);
         }
     }
-    customElements.define("my-star", Star);
+    setTimeout(()=>{
+        customElements.define("my-star", Star);
+    }, 800);
 }
 
 },{"../../state":"1Yeju","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gGFc6":[function(require,module,exports) {
@@ -1225,7 +1227,7 @@ const routes = [
         component: (0, _play.initPlay)
     }
 ];
-const BASE_PATH = "/desafio-integrador";
+const BASE_PATH = "/desafio-integrador-mod-5";
 function isGithubPages() {
     return location.host.includes("github.io");
 }
@@ -1594,14 +1596,6 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "initResult", ()=>initResult);
 var _state = require("../../state");
 function initResult(params) {
-    const currentState = (0, _state.state).getState();
-    console.log(currentState, "state en el init");
-    const playerScore = currentState.playHistory.player;
-    // console.log(playerScore, "player en el init");
-    const cpuScore = currentState.playHistory.cpu;
-    //  console.log(cpuScore, "cpu en el init");
-    const result = currentState.playHistory.result;
-    console.log(result, "result en el init");
     const div = document.createElement("div");
     const style = document.createElement("style");
     // creo el div con los contenido de la pagina
@@ -1650,13 +1644,8 @@ function initResult(params) {
     }
     function handel() {
         const currentState = (0, _state.state).getState();
-        console.log(currentState, "state en el init");
-        const playerScore = currentState.playHistory.player;
-        // console.log(playerScore, "player en el init");
-        const cpuScore = currentState.playHistory.cpu;
-        //  console.log(cpuScore, "cpu en el init");
+        // console.log(currentState, "state en el init");
         const result = currentState.playHistory.result;
-        console.log(result, "result en el init");
         const startEl = div.querySelector("my-star");
         const starCmon = startEl?.querySelector(".star");
         if (result == "Ganaste") starCmon.style.backgroundColor = "green";
@@ -1665,7 +1654,9 @@ function initResult(params) {
     }
     div.appendChild(style);
     handleClick();
-    handel();
+    setTimeout(()=>{
+        handel();
+    }, 1000);
     return div;
 }
 
