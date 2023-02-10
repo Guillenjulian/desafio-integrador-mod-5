@@ -1333,20 +1333,36 @@ function initRules(params) {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin: 50px auto;
-      width: 100vh;
+      justify-content: space-between;
       height: 100%;
+      margin:25px ;
       gap: 40px;
+    }
     
+    
+    @media (max-width: 768px){
+      
+      .contenedor{
+        
+
+       
 
     }
+  }
     .manos{
-      display: flex;
+     display: flex;
       justify-content: space-evenly;
       width: 100%;
-      margin: 0 auto;
 
+
+    }
+    @media (max-width: 768px){
+    .manos{
+      
+      width: 100%;
+      ;
+
+    }
     }
     
     
@@ -1620,7 +1636,7 @@ function initResult(params) {
     div.innerHTML = `
   <div class="contenedor">
   
-  
+ 
   <div class= "star-container">
   <h1 class = "star-title">Resultado</h1>
   
