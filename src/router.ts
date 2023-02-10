@@ -14,12 +14,12 @@ const routes = [
     component: initRules,
   },
   {
-    path: /\/result/,
-    component: initResult,
-  },
-  {
     path: /\/play/,
     component: initPlay,
+  },
+  {
+    path: /\/result/,
+    component: initResult,
   },
 ];
 

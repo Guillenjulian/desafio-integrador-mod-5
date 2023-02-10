@@ -151,7 +151,7 @@ export function initPlay(params) {
 
       manoTijeraElImg.style.height = "280px";
       manoTijeraElImg.style.width = "100px";
-    }, 800);
+    }, 1);
     clearInterval(interavalidId);
     setTimeout(() => {
       params.goTo("/result");
@@ -200,11 +200,11 @@ export function initPlay(params) {
 
       manoPapelElImg.style.height = "280px";
       manoPapelElImg.style.width = "100px";
-    }, 800);
+    }, 1);
     clearInterval(interavalidId);
     setTimeout(() => {
       params.goTo("/result");
-    }, 2000);
+    }, 2500);
 
     manoPapelElImg.removeEventListener("click", removepapelclick);
     manoPapelEl.style.cursor = "default";
@@ -247,13 +247,13 @@ export function initPlay(params) {
 
       manoPiedraElImg.style.height = "280px";
       manoPiedraElImg.style.width = "100px";
-    }, 800);
+    }, 1);
 
     clearInterval(interavalidId);
 
     setTimeout(() => {
       params.goTo("/result");
-    }, 2000);
+    }, 2500);
 
     manoPiedraElImg.removeEventListener("click", removepiedraclick);
 

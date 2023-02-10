@@ -38,7 +38,7 @@ const state = {
 
     currentState.currentGame.cpuPlay = gamePc;
     currentState.currentGame.userPlay = move;
-
+    state.setState(currentState);
     this.whoWin(move, gamePc);
   },
   whoWin(userPlay: jugada, cpuPlay: jugada) {
