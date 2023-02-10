@@ -1498,7 +1498,7 @@ function initPlay(params) {
             manoPapelEl.style.display = "none";
             manoTijeraElImg.style.height = "280px";
             manoTijeraElImg.style.width = "100px";
-        }, 800);
+        }, 1);
         clearInterval(interavalidId);
         setTimeout(()=>{
             params.goTo("/result");
@@ -1535,7 +1535,7 @@ function initPlay(params) {
             manoTijeraEl.style.display = "none";
             manoPapelElImg.style.height = "280px";
             manoPapelElImg.style.width = "100px";
-        }, 800);
+        }, 1);
         clearInterval(interavalidId);
         setTimeout(()=>{
             params.goTo("/result");
@@ -1572,7 +1572,7 @@ function initPlay(params) {
             manoTijeraEl.style.display = "none";
             manoPiedraElImg.style.height = "280px";
             manoPiedraElImg.style.width = "100px";
-        }, 800);
+        }, 1);
         clearInterval(interavalidId);
         setTimeout(()=>{
             params.goTo("/result");
