@@ -2,14 +2,15 @@
   "name": "desafio-integrador",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html"
+    "dev": "parcel ./src/index.html",
+    "build": " parcel ./src/index.html --dist-dir build --public-url  /desafio-integrador-mod-5/",
+    "deploy": "gh-pages -d build",
+    "start": "npm run build && npm run deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Guillenjulian/desafio-integrador-mod-5.git"
+    "url": "git+https://github.com/Guillenjulian/desafio-integrador-mod-5/"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,6 @@
     "parcel": "^2.8.3"
   },
   "dependencies": {
-    "@types/node": "^18.11.18"
+    "gh-pages": "^5.0.0"
   }
 }

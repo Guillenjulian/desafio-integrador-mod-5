@@ -22,16 +22,15 @@ export function initWelcome(params) {
     align-items: center;
     justify-content: space-evenly;
     gap: 50px;
-   margin-top: 8vh;
+  
     
   }
   .manos{
-    
-      display: flex;
-      gap: 50px;
-      
-      margin-top: 6vh;
-  }`;
+    display: flex;
+    gap: 50px;
+  
+  }
+  `;
 
   function handleClick() {
     const boton = div.querySelector(".boton");

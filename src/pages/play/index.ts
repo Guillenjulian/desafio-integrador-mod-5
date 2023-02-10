@@ -112,15 +112,17 @@ export function initPlay(params) {
   pcTijeraEl.style.objectPosition = "0px 43px";
 
   const pcPapelEl = div.querySelector(".pc-papel") as any;
+
   pcPapelEl.style.height = "279px";
   pcPapelEl.style.width = "87px";
   pcPapelEl.style.objectPosition = "0px 43px";
 
-  const pcPiedraEl = div.querySelector(".pc-papel") as any;
+  const pcPiedraEl = div.querySelector(".pc-piedra") as any;
   pcPiedraEl.style.height = "279px";
   pcPiedraEl.style.width = "87px";
   pcPiedraEl.style.objectPosition = "0px 43px";
 
+  // estilos de componentes de mano --tijera
   const manoTijeraEl = div.querySelector(".mano-tijera") as any;
 
   const manoTijeraElImg = manoTijeraEl.querySelector(".tijera-img") as any;
@@ -139,9 +141,9 @@ export function initPlay(params) {
       if (state.data.currentGame.cpuPlay == "tijera") {
         pcTijeraEl.style.display = "flex";
       } else if (state.data.currentGame.cpuPlay == "piedra") {
-        manoPiedraEl.style.display = "flex";
+        pcPapelEl.style.display = "flex";
       } else if (state.data.currentGame.cpuPlay == "papel") {
-        manoPapelEl.style.display = "flex";
+        pcPiedraEl.style.display = "flex";
       }
       contadorComp.style.display = "none";
       manoPiedraEl.style.display = "none";
@@ -166,11 +168,10 @@ export function initPlay(params) {
     manoPapelEl.style.transform = "unset";
 
     manoTijeraEl.removeEventListener("click", removetijerasclick);
-    manoPiedraEl.removeEventListener("click", removetijerasclick);
-    manoPapelEl.removeEventListener("click", removetijerasclick);
   };
   manoTijeraElImg.addEventListener("click", removetijerasclick);
 
+  // estilos de componentes de mano --papel
   const manoPapelEl = div.querySelector(".mano-papel") as any;
   const manoPapelElImg = manoPapelEl.querySelector(".paper-img") as any;
   manoPapelElImg.style.height = "230px";
@@ -189,9 +190,9 @@ export function initPlay(params) {
       if (state.data.currentGame.cpuPlay == "tijera") {
         pcTijeraEl.style.display = "flex";
       } else if (state.data.currentGame.cpuPlay == "piedra") {
-        manoPiedraEl.style.display = "flex";
+        pcPiedraEl.style.display = "flex";
       } else if (state.data.currentGame.cpuPlay == "papel") {
-        manoPapelEl.style.display = "flex";
+        pcPapelEl.style.display = "flex";
       }
       contadorComp.style.display = "none";
       manoPiedraEl.style.display = "none";
@@ -199,12 +200,6 @@ export function initPlay(params) {
 
       manoPapelElImg.style.height = "280px";
       manoPapelElImg.style.width = "100px";
-
-      manoPapelElImg.style.objectPosition = "0px 43px";
-      manoPapelElImg.style.transition = "all 0.5s ease-out";
-
-      manoPiedraEl.style.opacity = "0.4";
-      manoTijeraEl.style.opacity = "0.4";
     }, 800);
     clearInterval(interavalidId);
     setTimeout(() => {
@@ -221,10 +216,6 @@ export function initPlay(params) {
     manoTijeraElImg.removeEventListener("click", removepapelclick);
     manoTijeraEl.style.cursor = "default";
     manoTijeraEl.style.transform = "unset";
-
-    manoTijeraEl.removeEventListener("click", removepapelclick);
-    manoPiedraEl.removeEventListener("click", removepapelclick);
-    manoPapelEl.removeEventListener("click", removepapelclick);
   };
   manoPapelElImg.addEventListener("click", removepapelclick);
 
@@ -246,9 +237,9 @@ export function initPlay(params) {
       if (state.data.currentGame.cpuPlay == "tijera") {
         pcTijeraEl.style.display = "flex";
       } else if (state.data.currentGame.cpuPlay == "piedra") {
-        manoPiedraEl.style.display = "flex";
+        pcPiedraEl.style.display = "flex";
       } else if (state.data.currentGame.cpuPlay == "papel") {
-        manoPapelEl.style.display = "flex";
+        pcPapelEl.style.display = "flex";
       }
       contadorComp.style.display = "none";
       manoPapelEl.style.display = "none";

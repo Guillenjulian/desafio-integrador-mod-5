@@ -2,16 +2,16 @@ import { state } from "../../state";
 
 export function initResult(params) {
   const currentState = state.getState();
-  // console.log(currentState);
+  console.log(currentState, "state en el init");
 
   const playerScore = currentState.playHistory.player;
-  //console.log(playerScore);
+  // console.log(playerScore, "player en el init");
 
   const cpuScore = currentState.playHistory.cpu;
-  //console.log(cpuScore);
+  //  console.log(cpuScore, "cpu en el init");
 
   const result = currentState.playHistory.result;
-  console.log(result);
+  console.log(result, "result en el init");
 
   const div = document.createElement("div");
   const style = document.createElement("style");
@@ -21,7 +21,7 @@ export function initResult(params) {
   <div class="contenedor">
   
   
-  <my-star ,></my-star>
+  <my-star></my-star>
 
   <my-button  class="boton"    value="Volver a jugar" ></my-button>
   <my-button  class="boton1"  " value="Salir" ></my-button>
@@ -63,15 +63,27 @@ export function initResult(params) {
       params.goTo("/reglas");
     });
   }
+
   function handel() {
+    const currentState = state.getState();
+    console.log(currentState, "state en el init");
+
+    const playerScore = currentState.playHistory.player;
+    // console.log(playerScore, "player en el init");
+
+    const cpuScore = currentState.playHistory.cpu;
+    //  console.log(cpuScore, "cpu en el init");
+
+    const result = currentState.playHistory.result;
+    console.log(result, "result en el init");
     const startEl = div.querySelector("my-star");
     const starCmon: any = startEl?.querySelector(".star");
 
-    if (result === "Ganaste") {
+    if (result == "Ganaste") {
       starCmon.style.backgroundColor = "green";
-    } else if (result === "Perdiste") {
+    } else if (result == "Perdiste") {
       starCmon.style.backgroundColor = "red";
-    } else if (result === "Empate") {
+    } else if (result == "Empate") {
       starCmon.style.backgroundColor = "yellow";
     }
   }

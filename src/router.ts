@@ -27,6 +27,7 @@ const BASE_PATH = "/desafio-integrador";
 function isGithubPages() {
   return location.host.includes("github.io");
 }
+
 export function initRouter(container: any) {
   function goTo(path) {
     ////primera solucion al problema de las rutas en github pages
