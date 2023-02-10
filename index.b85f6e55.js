@@ -1136,9 +1136,7 @@ function initStar() {
             this.appendChild(div);
         }
     }
-    setTimeout(()=>{
-        customElements.define("my-star", Star);
-    }, 800);
+    customElements.define("my-star", Star);
 }
 
 },{"../../state":"1Yeju","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gGFc6":[function(require,module,exports) {
@@ -1219,12 +1217,12 @@ const routes = [
         component: (0, _reglas.initRules)
     },
     {
-        path: /\/result/,
-        component: (0, _result.initResult)
-    },
-    {
         path: /\/play/,
         component: (0, _play.initPlay)
+    },
+    {
+        path: /\/result/,
+        component: (0, _result.initResult)
     }
 ];
 const BASE_PATH = "/desafio-integrador-mod-5";
@@ -1541,7 +1539,7 @@ function initPlay(params) {
         clearInterval(interavalidId);
         setTimeout(()=>{
             params.goTo("/result");
-        }, 2000);
+        }, 2500);
         manoPapelElImg.removeEventListener("click", removepapelclick);
         manoPapelEl.style.cursor = "default";
         manoPapelEl.style.transform = "unset";
@@ -1578,7 +1576,7 @@ function initPlay(params) {
         clearInterval(interavalidId);
         setTimeout(()=>{
             params.goTo("/result");
-        }, 2000);
+        }, 2500);
         manoPiedraElImg.removeEventListener("click", removepiedraclick);
         manoPiedraEl.style.cursor = "default";
         manoPiedraEl.style.transform = "unset";
@@ -1654,7 +1652,9 @@ function initResult(params) {
     }
     div.appendChild(style);
     handleClick();
-    handel();
+    setTimeout(()=>{
+        handel();
+    }, 1000);
     return div;
 }
 
