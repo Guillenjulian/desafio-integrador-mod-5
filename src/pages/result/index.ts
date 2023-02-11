@@ -2,7 +2,7 @@ import { state } from "../../state";
 
 export function initResult(params) {
   const currentState: any = state.getState();
-  // console.log(currentState, "state");
+  // console.log(currentState.currentGame, "state");
 
   const playerScore: any = currentState.playHistory.player;
   //console.log(playerScore, "player");
