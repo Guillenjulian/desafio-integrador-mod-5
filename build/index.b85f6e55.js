@@ -654,10 +654,10 @@ const state = {
         ];
         if (jugadaEmpatada.includes(true)) return this.pushHistory("Empates");
     },
-    pushHistory (jugada) {
+    pushHistory (jugada, playerScore, cpuScore) {
         const currentState = this.getState();
-        const playerScore = currentState.playHistory.player;
-        const cpuScore = currentState.playHistory.cpu;
+        playerScore = currentState.playHistory.player;
+        cpuScore = currentState.playHistory.cpu;
         if (jugada == "Ganador") this.setState({
             ...currentState,
             playHistory: {
@@ -1301,7 +1301,7 @@ function initWelcome(params) {
     function handleClick() {
         const boton = div.querySelector(".boton");
         boton?.addEventListener("click", ()=>{
-            console.log("click");
+            // console.log("click");
             params.goTo("/reglas");
         });
     }
@@ -1336,7 +1336,7 @@ function initRules(params) {
       justify-content: space-between;
       height: 100%;
       margin:25px ;
-      gap: 40px;
+      gap: 20px;
     }
     
     
@@ -1425,7 +1425,7 @@ function initPlay(params) {
 `;
     style.innerHTML = `
   .contenedor{
-  height:100vh;
+  height:100%;
   display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1500,6 +1500,7 @@ function initPlay(params) {
     manoTijeraElImg.style.height = "230px";
     manoTijeraElImg.style.width = "75px";
     manoTijeraElImg.style.objectPosition = "0px 43px";
+    //
     const removetijerasclick = ()=>{
         (0, _state.state).setMove("tijera");
         manoTijeraElImg.style.objectPosition = "0px 43px";
@@ -1508,8 +1509,8 @@ function initPlay(params) {
         manoPapelEl.style.opacity = "0.4";
         setTimeout(()=>{
             if ((0, _state.state).data.currentGame.cpuPlay == "tijera") pcTijeraEl.style.display = "flex";
-            else if ((0, _state.state).data.currentGame.cpuPlay == "piedra") pcPapelEl.style.display = "flex";
-            else if ((0, _state.state).data.currentGame.cpuPlay == "papel") pcPiedraEl.style.display = "flex";
+            else if ((0, _state.state).data.currentGame.cpuPlay == "piedra") pcPiedraEl.style.display = "flex";
+            else if ((0, _state.state).data.currentGame.cpuPlay == "papel") pcPapelEl.style.display = "flex";
             contadorComp.style.display = "none";
             manoPiedraEl.style.display = "none";
             manoPapelEl.style.display = "none";
@@ -1532,11 +1533,11 @@ function initPlay(params) {
         manoTijeraEl.removeEventListener("click", removetijerasclick);
     };
     manoTijeraElImg.addEventListener("click", removetijerasclick);
-    // estilos de componentes de mano --papel
     const manoPapelEl = div.querySelector(".mano-papel");
     const manoPapelElImg = manoPapelEl.querySelector(".paper-img");
     manoPapelElImg.style.height = "230px";
     manoPapelElImg.style.width = "75px";
+    // estilos de componentes de mano --papel
     const removepapelclick = ()=>{
         (0, _state.state).setMove("papel");
         manoPapelElImg.style.objectPosition = "0px 43px";
@@ -1557,6 +1558,7 @@ function initPlay(params) {
         setTimeout(()=>{
             params.goTo("/result");
         }, 2500);
+        // le doy estlos y remuevo elementos si pierdo con papel
         manoPapelElImg.removeEventListener("click", removepapelclick);
         manoPapelEl.style.cursor = "default";
         manoPapelEl.style.transform = "unset";
@@ -1612,7 +1614,7 @@ parcelHelpers.export(exports, "initResult", ()=>initResult);
 var _state = require("../../state");
 function initResult(params) {
     const currentState = (0, _state.state).getState();
-    // console.log(currentState, "state");
+    console.log(currentState, "state");
     const playerScore = currentState.playHistory.player;
     //console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
@@ -1635,8 +1637,8 @@ function initResult(params) {
   <div class= "star-container">
   <h1 class = "star-title">Resultado</h1>
   
-  <p class = "text">  TU :${playerScore}</p>
-  <p class = "text"> PC. ${cpuScore} </p>
+  <p class = "text">  TU :${playerScore | 0}</p>
+  <p class = "text"> PC. ${cpuScore | 0} </p>
   
   
   <div class="star">
@@ -1652,16 +1654,18 @@ function initResult(params) {
   `;
     style.innerHTML = `
  .container {
-  
+   
 }
 .contenedor {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
-  margin-bottom: 30px;
+gap: 20px;
 
 }
 @media (max-width: 768px){
@@ -1737,9 +1741,9 @@ font-family: 'Roboto', sans-serif;
 font-weight: 700;
 color: black;
 margin-top: 20px;
-
-
 }
+
+
 
  
  

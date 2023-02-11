@@ -67,10 +67,14 @@ const state = {
       return this.pushHistory("Empates");
     }
   },
-  pushHistory(jugada: string) {
+  pushHistory(
+    jugada: "Ganador" | "Perdedor" | "Empates",
+    playerScore: number,
+    cpuScore: number
+  ) {
     const currentState = this.getState();
-    const playerScore = currentState.playHistory.player;
-    const cpuScore = currentState.playHistory.cpu;
+    playerScore = currentState.playHistory.player;
+    cpuScore = currentState.playHistory.cpu;
 
     if (jugada == "Ganador") {
       this.setState({

@@ -20,7 +20,7 @@ export function initRules(params) {
       justify-content: space-between;
       height: 100%;
       margin:25px ;
-      gap: 40px;
+      gap: 20px;
     }
     
     

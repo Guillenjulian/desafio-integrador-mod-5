@@ -35,7 +35,7 @@ export function initWelcome(params) {
   function handleClick() {
     const boton = div.querySelector(".boton");
     boton?.addEventListener("click", () => {
-      console.log("click");
+      // console.log("click");
       params.goTo("/reglas");
     });
   }

@@ -2,15 +2,15 @@ import { state } from "../../state";
 
 export function initResult(params) {
   const currentState: any = state.getState();
-  // console.log(currentState.currentGame, "state");
+  console.log(currentState, "state");
 
-  const playerScore: any = currentState.playHistory.player;
+  const playerScore: number = currentState.playHistory.player;
   //console.log(playerScore, "player");
 
-  const cpuScore: any = currentState.playHistory.cpu;
+  const cpuScore: number = currentState.playHistory.cpu;
   //console.log(cpuScore, "cpu");
 
-  const resultEL: any = currentState.playHistory.result;
+  const resultEL: string = currentState.playHistory.result;
   // console.log(resultEL, "result");
   const div = document.createElement("div");
   const style = document.createElement("style");
@@ -35,8 +35,8 @@ export function initResult(params) {
   <div class= "star-container">
   <h1 class = "star-title">Resultado</h1>
   
-  <p class = "text">  TU :${playerScore}</p>
-  <p class = "text"> PC. ${cpuScore} </p>
+  <p class = "text">  TU :${playerScore | 0}</p>
+  <p class = "text"> PC. ${cpuScore | 0} </p>
   
   
   <div class="star">
@@ -52,16 +52,18 @@ export function initResult(params) {
   `;
   style.innerHTML = `
  .container {
-  
+   
 }
 .contenedor {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
-  margin-bottom: 30px;
+gap: 20px;
 
 }
 @media (max-width: 768px){
