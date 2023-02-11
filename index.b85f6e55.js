@@ -654,10 +654,10 @@ const state = {
         ];
         if (jugadaEmpatada.includes(true)) return this.pushHistory("Empates");
     },
-    pushHistory (jugada) {
+    pushHistory (jugada, playerScore, cpuScore) {
         const currentState = this.getState();
-        const playerScore = currentState.playHistory.player;
-        const cpuScore = currentState.playHistory.cpu;
+        playerScore = currentState.playHistory.player;
+        cpuScore = currentState.playHistory.cpu;
         if (jugada == "Ganador") this.setState({
             ...currentState,
             playHistory: {
@@ -1614,7 +1614,7 @@ parcelHelpers.export(exports, "initResult", ()=>initResult);
 var _state = require("../../state");
 function initResult(params) {
     const currentState = (0, _state.state).getState();
-    // console.log(currentState.currentGame, "state");
+    console.log(currentState, "state");
     const playerScore = currentState.playHistory.player;
     //console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
@@ -1637,8 +1637,8 @@ function initResult(params) {
   <div class= "star-container">
   <h1 class = "star-title">Resultado</h1>
   
-  <p class = "text">  TU :${playerScore}</p>
-  <p class = "text"> PC. ${cpuScore} </p>
+  <p class = "text">  TU :${playerScore | 0}</p>
+  <p class = "text"> PC. ${cpuScore | 0} </p>
   
   
   <div class="star">
