@@ -1301,7 +1301,7 @@ function initWelcome(params) {
     function handleClick() {
         const boton = div.querySelector(".boton");
         boton?.addEventListener("click", ()=>{
-            console.log("click");
+            // console.log("click");
             params.goTo("/reglas");
         });
     }
@@ -1336,7 +1336,7 @@ function initRules(params) {
       justify-content: space-between;
       height: 100%;
       margin:25px ;
-      gap: 40px;
+      gap: 20px;
     }
     
     
@@ -1425,7 +1425,7 @@ function initPlay(params) {
 `;
     style.innerHTML = `
   .contenedor{
-  height:100vh;
+  height:100%;
   display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1654,16 +1654,18 @@ function initResult(params) {
   `;
     style.innerHTML = `
  .container {
-  
+   
 }
 .contenedor {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
-  margin-bottom: 30px;
+gap: 20px;
 
 }
 @media (max-width: 768px){
