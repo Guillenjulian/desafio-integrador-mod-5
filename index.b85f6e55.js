@@ -1500,6 +1500,7 @@ function initPlay(params) {
     manoTijeraElImg.style.height = "230px";
     manoTijeraElImg.style.width = "75px";
     manoTijeraElImg.style.objectPosition = "0px 43px";
+    //
     const removetijerasclick = ()=>{
         (0, _state.state).setMove("tijera");
         manoTijeraElImg.style.objectPosition = "0px 43px";
@@ -1508,8 +1509,8 @@ function initPlay(params) {
         manoPapelEl.style.opacity = "0.4";
         setTimeout(()=>{
             if ((0, _state.state).data.currentGame.cpuPlay == "tijera") pcTijeraEl.style.display = "flex";
-            else if ((0, _state.state).data.currentGame.cpuPlay == "piedra") pcPapelEl.style.display = "flex";
-            else if ((0, _state.state).data.currentGame.cpuPlay == "papel") pcPiedraEl.style.display = "flex";
+            else if ((0, _state.state).data.currentGame.cpuPlay == "piedra") pcPiedraEl.style.display = "flex";
+            else if ((0, _state.state).data.currentGame.cpuPlay == "papel") pcPapelEl.style.display = "flex";
             contadorComp.style.display = "none";
             manoPiedraEl.style.display = "none";
             manoPapelEl.style.display = "none";
@@ -1532,11 +1533,11 @@ function initPlay(params) {
         manoTijeraEl.removeEventListener("click", removetijerasclick);
     };
     manoTijeraElImg.addEventListener("click", removetijerasclick);
-    // estilos de componentes de mano --papel
     const manoPapelEl = div.querySelector(".mano-papel");
     const manoPapelElImg = manoPapelEl.querySelector(".paper-img");
     manoPapelElImg.style.height = "230px";
     manoPapelElImg.style.width = "75px";
+    // estilos de componentes de mano --papel
     const removepapelclick = ()=>{
         (0, _state.state).setMove("papel");
         manoPapelElImg.style.objectPosition = "0px 43px";
@@ -1557,6 +1558,7 @@ function initPlay(params) {
         setTimeout(()=>{
             params.goTo("/result");
         }, 2500);
+        // le doy estlos y remuevo elementos si pierdo con papel
         manoPapelElImg.removeEventListener("click", removepapelclick);
         manoPapelEl.style.cursor = "default";
         manoPapelEl.style.transform = "unset";
@@ -1612,7 +1614,7 @@ parcelHelpers.export(exports, "initResult", ()=>initResult);
 var _state = require("../../state");
 function initResult(params) {
     const currentState = (0, _state.state).getState();
-    // console.log(currentState, "state");
+    // console.log(currentState.currentGame, "state");
     const playerScore = currentState.playHistory.player;
     //console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
@@ -1737,9 +1739,9 @@ font-family: 'Roboto', sans-serif;
 font-weight: 700;
 color: black;
 margin-top: 20px;
-
-
 }
+
+
 
  
  
