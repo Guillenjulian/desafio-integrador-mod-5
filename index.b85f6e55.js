@@ -1637,8 +1637,8 @@ function initResult(params) {
   <div class= "star-container">
   <h1 class = "star-title">Resultado</h1>
   
-  <p class = "text">  TU :${playerScore | 0}</p>
-  <p class = "text"> PC. ${cpuScore | 0} </p>
+  <p class = "text">  TU :${playerScore}</p>
+  <p class = "text"> PC. ${cpuScore} </p>
   
   
   <div class="star">
