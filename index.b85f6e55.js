@@ -566,12 +566,14 @@ var _index4 = require("./componet/mano-tijera/index");
 var _index5 = require("./componet/contador/index");
 var _cardResult = require("./componet/card-result");
 var _index6 = require("./componet/text-rules/index");
+var _textResult = require("./componet/text-result");
 var _router = require("./router");
 function inicializa() {
     (0, _index.init)();
     (0, _index6.initRules)();
     (0, _index1.init)();
     (0, _index5.init)();
+    (0, _textResult.initResult)();
     (0, _cardResult.initStar)();
     (0, _index2.init)();
     (0, _index3.init)();
@@ -588,7 +590,7 @@ function inicializa() {
 // console.log(localStorage.savedPlay);
 })();
 
-},{"./state":"1Yeju","./componet/button/index":"2paZq","./componet/text-init/index":"bRr5Y","./componet/mano-papel/index":"bda4w","./componet/mano-piedra/index":"e5Vdc","./componet/mano-tijera/index":"kgzbz","./componet/contador/index":"8bBHG","./componet/card-result":"j54jn","./componet/text-rules/index":"gGFc6","./router":"4QFWt"}],"1Yeju":[function(require,module,exports) {
+},{"./state":"1Yeju","./componet/button/index":"2paZq","./componet/text-init/index":"bRr5Y","./componet/mano-papel/index":"bda4w","./componet/mano-piedra/index":"e5Vdc","./componet/mano-tijera/index":"kgzbz","./componet/contador/index":"8bBHG","./componet/card-result":"j54jn","./componet/text-rules/index":"gGFc6","./componet/text-result":"7QDXi","./router":"4QFWt"}],"1Yeju":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
@@ -598,13 +600,15 @@ const state = {
             cpuPlay: "",
             userPlay: ""
         },
-        playHistory: [
-            {
-                player: 0,
-                cpu: 0,
-                result: ""
-            }
-        ]
+        playHistory: {
+            player: 0,
+            cpu: 0,
+            result: ""
+        }
+    },
+    listeners: [],
+    suscribe (callback) {
+        this.listeners.push(callback);
     },
     init () {
         const localData = localStorage.getItem("Saved-play");
@@ -612,6 +616,7 @@ const state = {
     },
     setState (newState) {
         this.data = newState;
+        for (const cb of this.listeners)cb();
         localStorage.setItem("Saved-play", JSON.stringify(this.data));
     },
     getState () {
@@ -1200,7 +1205,59 @@ function initRules() {
     customElements.define("my-rules", TextRules);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4QFWt":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7QDXi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initResult", ()=>initResult);
+var _state = require("../../state");
+function initResult() {
+    class TextResult extends HTMLElement {
+        constructor(){
+            super();
+            this.render();
+        }
+        render() {
+            const currentState = (0, _state.state).getState();
+            // console.log(currentState, "state");
+            const playerScore = currentState.playHistory.player;
+            //const playerResult = playerScore == 0 ? 0 : playerScore;
+            console.log(playerScore, "player");
+            const cpuScore = currentState.playHistory.cpu;
+            // const cpuResult = cpuScore == 0 ? 0 : cpuScore;
+            console.log(typeof cpuScore, "cpu");
+            const div = document.createElement("div");
+            const style = document.createElement("style");
+            div.className = "container-result";
+            // creo el div con los contenido de la pagina
+            div.innerHTML = `
+
+    
+    <p class = "text">  TU :${playerScore}</p>
+    <p class = "text"> PC: ${cpuScore} </p>
+    
+    
+    
+
+    `;
+            style.innerHTML = `
+      .text {
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        color: black;
+        margin-top: 20px;
+        }
+     
+`;
+            div.appendChild(style);
+            this.firstChild?.remove();
+            this.appendChild(div);
+        }
+    }
+    customElements.define("text-result", TextResult);
+}
+
+},{"../../state":"1Yeju","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4QFWt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "initRouter", ()=>initRouter);
@@ -1614,7 +1671,7 @@ parcelHelpers.export(exports, "initResult", ()=>initResult);
 var _state = require("../../state");
 function initResult(params) {
     const currentState = (0, _state.state).getState();
-    console.log(currentState, "state");
+    //console.log(currentState, "state");
     const playerScore = currentState.playHistory.player;
     //console.log(playerScore, "player");
     const cpuScore = currentState.playHistory.cpu;
@@ -1636,9 +1693,8 @@ function initResult(params) {
  
   <div class= "star-container">
   <h1 class = "star-title">Resultado</h1>
-  
-  <p class = "text">  TU :${playerScore}</p>
-  <p class = "text"> PC. ${cpuScore} </p>
+      
+<text-result></text-result>
   
   
   <div class="star">
@@ -1736,12 +1792,12 @@ color: #000;
 }
 }
 .text {
-font-size: 20px;
-font-family: 'Roboto', sans-serif;
-font-weight: 700;
-color: black;
-margin-top: 20px;
-}
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: black;
+  margin-top: 20px;
+  }
 
 
 
