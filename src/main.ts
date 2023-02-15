@@ -8,6 +8,7 @@ import { init as initManoTijera } from "./componet/mano-tijera/index";
 import { init as initcontador } from "./componet/contador/index";
 import { initStar } from "./componet/card-result";
 import { initRules } from "./componet/text-rules/index";
+import { initResult } from "./componet/text-result";
 
 import { initRouter } from "./router";
 
@@ -16,7 +17,7 @@ function inicializa() {
   initRules();
   initText();
   initcontador();
-
+  initResult();
   initStar();
   initManoPapel();
   initManoPiedra();

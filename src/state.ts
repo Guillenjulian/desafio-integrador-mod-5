@@ -5,13 +5,16 @@ const state = {
       cpuPlay: "",
       userPlay: "",
     },
-    playHistory: [
-      {
-        player: 0,
-        cpu: 0,
-        result: "",
-      },
-    ],
+    playHistory: {
+      player: 0,
+      cpu: 0,
+      result: "",
+    },
+  },
+  listeners: [],
+
+  suscribe(callback: () => any) {
+    this.listeners.push(callback);
   },
   init() {
     const localData: any = localStorage.getItem("Saved-play");
@@ -19,6 +22,10 @@ const state = {
   },
   setState(newState: any) {
     this.data = newState;
+    for (const cb of this.listeners) {
+      cb();
+    }
+
     localStorage.setItem("Saved-play", JSON.stringify(this.data));
   },
   getState() {
